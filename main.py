@@ -8,8 +8,8 @@ import csv
 
 
 df = pandas.read_csv('emisie.csv')
-INDICATOR = 'Kraj'
-data = df[df['Kraj'] == INDICATOR]
+INDICATOR = 'PROD_TONY'
+data = df[df['Typ'] == INDICATOR]
 max_year = data['Rok'].max()
 data = data[data['Rok'] == max_year]
 
@@ -20,7 +20,7 @@ folium.Choropleth(
     geo_data='kraje.json',
     data=map_data,
     columns=['Kraj', 'Hodnota'],
-    key_on='properties.REF',
+    key_on='feature.properties.id',
     fill_color='YlGnBu',
     fill_opacity=0.7,
     line_opacity=0.2,
